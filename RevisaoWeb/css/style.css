@@ -1,6 +1,6 @@
 body{
 margin: 0;
-background-color: aqua;
+
 }
 header{
     width: 100%;
@@ -20,11 +20,39 @@ header{
 }
 .menu .linkmenu{
     text-decoration: none;
-    font-size: 24px;
+    font-size: 22px;
     color: aliceblue;
     width: 50%;
 
   
+}
+.cadastro{
+    width: 700px;
+ margin: auto;
+ display: flex;
+ flex-direction: column;
+ border-radius:3px; 
+ padding:1em;
+}
+.form_gr{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    position: relative;
+    
+}
+.form_gr{
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+
+}
+footer{
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    background-color: aqua;
+    margin-block-end:0;
 }
 header img{
     height: 90%;
@@ -34,11 +62,14 @@ header img{
     display: none;
 
 }
-@media screen and (max-width:800px){
+@media screen and (max-width:1024px){
     .menu{
         display: none;
     }
     .hamb{
         display: inline;
+    }
+    .hamb {
+
     }
 }

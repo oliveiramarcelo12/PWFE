@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: grey;">
+    <header>
+        <img src="img/images.png" alt="logo">
+        <div class="menu">
+            <a href="index.html" class="linkmenu">HOME</a>
+            <a href="" class="linkmenu">PRODUTOS</a>
+            <a href="" class="linkmenu">CADASTRO</a>
+            <a href="" class="linkmenu">LOGIN</a>
+            <img src="img/588a64e0d06f6719692a2d10.png" alt="" class="hamburger">
+        </div>
+    </header>
+     <div class="cadastro" style="background-color: aliceblue;">
+        <form>
+            <h1>Faça o seu Cadastro </h1>
+            <div class="form_gr">
+                <label for="pmail" title="Mail">E-mail:</label>
+                <input type="email" name="e-mail" id="pmail" />
+                <label for="pmail" title="Mail">Confirme E-mail:</label>
+                <input type="email" name="e-mail" id="1pmail" />
+
+            </div>
+            <div class="form_gr">
+                
+            <label for="psenha" title="Senha">Senha:</label>
+            <input type="password" name="senha" id="psenha">
+            <label for="psenha" title="Senha">Confirme a Senha:</label>
+            <input type="password" name="senha" id="1psenha">
+            </div>
+            <div class="form_gr">
+            <label for="pnome" title="nome">Nome:</label>
+            <input type="text" name="nome" id="pnome" placeholder="Seu Nome" >
+            <label for="psnome" title="snome">Sobrenome:</label>
+            <input type="text" name="snome" id="1psnome" class="form_input" >
+            <br>
+            <label for="date" title="data">Data de Nascimento:</label>
+            <input type="date" name="pdata" id="nasci">
+
+
+            </div>
+           <div class="form_gr">
+            <label for="pendereco" title="sendereco">Endereço:</label>
+            <input type="text" name="sendereco" id="pendereco" >
+            <label for="city" title="scidade">Cidade:</label>
+            <input type="text" name="scity" id="scity" >
+            <br>
+            <label for="pestado" title="sestado">Estado:</label>
+            <input type="text" name="sestado" id="sestado" >
+
+           </div>
+            
+            <input type="submit" value="Enviar" onclick="enviar()" >
+            <input type="reset" value="Limpar" > <br>
+            
+        </form>
+
+     </div>
+    
+    
+</body>
+<script src="script.js"></script>
+</html>
