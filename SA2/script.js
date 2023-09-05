@@ -1,84 +1,116 @@
-const currentPlayer = document.querySelector(".currentPlayer");
+  // Variáveis globais
+  const currentPlayer = document.querySelector(".currentPlayer");
+  const winsXElement = document.getElementById("winsX");
+  const winsOElement = document.getElementById("winsO");
+  let selected;
+  let player = "X";
+  let winsX = 0;
+  let winsO = 0;
+  const resultElement = document.getElementById("result");
+const resultTextElement = document.getElementById("resultText");
 
-let selected;
-let player = "X";
-let winsX = 0;
-let winsO = 0;
+  // Combinações vencedoras
+  const winningCombinations = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 6, 9],
+      [1, 5, 9],
+      [3, 5, 7],
+  ];
 
-let positions = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9],
-  [1, 5, 9],
-  [3, 5, 7],
-];
-//jogador que vai jogar
+  // Função para inicializar o jogo
+  function init() {
+      selected = [];
+      currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 
-function init() {
-  selected = [];
+      document.querySelectorAll(".game button").forEach((item) => {
+          item.innerHTML = "";
+          item.classList.remove("button-x", "button-o");
+          item.addEventListener("click", newMove);
+      });
+  }
 
-  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  // Iniciar o jogo
+  init();
 
-  document.querySelectorAll(".game button").forEach((item) => {
-    item.innerHTML = "";
-    item.addEventListener("click", newMove);
-  });
-}
+  // Função para uma nova jogada
+  function newMove(e) {
+      const index = e.target.getAttribute("data-i");
+      e.target.innerHTML = player;
+      e.target.classList.add(player === "X" ? "button-x" : "button-o"); // Adicionar classe de cor ao botão
+      e.target.removeEventListener("click", newMove);
+      selected[index] = player;
 
-init();//inicia o jogo
-
-function newMove(e) {
-  const index = e.target.getAttribute("data-i");
-  e.target.innerHTML = player;
-  e.target.removeEventListener("click", newMove);
-  selected[index] = player;
-
-  setTimeout(() => {
-    check();
-  }, [100]);
-
-  player = player === "X" ? "O" : "X";
-  currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
-}
-//verificar se houve um vencedor ou empate
-function check() {
-    let playerLastMove = player === "X" ? "O" : "X";
+      checkWinner();
+      togglePlayer();
+      e.target.classList.add("fade-in"); //animação
+  }
   
-    const items = selected
-      .map((item, i) => [item, i])
-      .filter((item) => item[0] === playerLastMove)
-      .map((item) => item[1]);
+
+  // Verificar se há um vencedor ou empate
+  function checkWinner() {
+    const playerLastMove = player === "X" ? "O" : "X";
   
-    for (pos of positions) {
-      if (pos.every((item) => items.includes(item))) {
-        alert("O JOGADOR '" + playerLastMove + "' GANHOU!");
-        
-        // Atualize a contagem de vitórias do jogador vencedor
-        if (playerLastMove === "X") {
-          winsX++;
-        } else {
-          winsO++;
-        }
-  
-        // Atualize a exibição das vitórias na página
-        document.getElementById("winsX").textContent = winsX;
-        document.getElementById("winsO").textContent = winsO;
-  
+    for (const combination of winningCombinations) {
+      if (
+        selected[combination[0]] === playerLastMove &&
+        selected[combination[1]] === playerLastMove &&
+        selected[combination[2]] === playerLastMove
+      ) {
+        const message = `O JOGADOR ${playerLastMove} GANHOU!`;
+        showResult(message, true); // Indicador de vitória
+        updateScore(playerLastMove);
         init();
         return;
       }
     }
   
     if (selected.filter((item) => item).length === 9) {
-      alert("DEU EMPATE!");
+      const message = "DEU EMPATE!";
+      showResult(message, false); // Indicador de empate
       init();
       return;
     }
   }
-  // Inicialização de variáveis
+  
+  function showResult(message, isWin) {
+    resultTextElement.textContent = message;
+  
+    if (isWin) {
+      resultElement.classList.add("win-message");
+    } else {
+      resultElement.classList.add("tie-message");
+    }
+  
+    resultElement.classList.add("fade-in"); // Adiciona a animação de entrada
+    resultElement.style.display = "block";
+  
+    setTimeout(() => {
+      resultElement.classList.add("fade-out"); // Adiciona a animação de saída
+      resultTextElement.textContent = "";
+      setTimeout(() => {
+        resultElement.style.display = "none";
+        resultElement.classList.remove("fade-in", "fade-out", "win-message", "tie-message"); // Remove as classes de animação e estilo
+      }, 500); // Tempo de espera após a animação de saída
+    }, 3000); // Tempo de exibição da mensagem de resultado
+  }
+  // Alternar entre os jogadores
+  function togglePlayer() {
+      player = player === "X" ? "O" : "X";
+      currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+  }
 
-
-
+  // Atualizar a contagem de vitórias
+  function updateScore(playerLastMove) {
+      if (playerLastMove === "X") {
+          winsX++;
+          winsXElement.textContent = winsX;
+      } else {
+          winsO++;
+          winsOElement.textContent = winsO;
+      }
+  }
+  

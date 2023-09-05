@@ -56,6 +56,65 @@
   }
   
   .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.2s ease-in-out;
   }
- 
+  .button-x {
+    content: 'X';
+    color: red; /* Cor do texto para X */
+}
+
+/* Estilos personalizados para o texto O */
+.button-o {
+    content: 'O';
+    color: green; /* Cor do texto para O */
+}
+.winner {
+  animation: highlightWinner 2s ease-in-out;
+  background-color: gold; /* Cor de fundo quando o jogador vence */
+}
+
+.result {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+  z-index: 999;
+  animation: fadeIn 0.5s ease-in-out;
+  
+}
+/* Estilos para a mensagem de vitória */
+.win-message {
+  color: white; /* Cor do texto para vitória */
+  background-color: black; /* Cor de fundo para vitória */
+}
+
+/* Estilos para a mensagem de empate */
+.tie-message {
+  color: red; /* Cor do texto para empate */
+  background-color: lightgray; /* Cor de fundo para empate */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Estilos base para dispositivos móveis */
+/* ... */
+
+@media (min-width: 680px) {
+  /* Estilos para tablets e telas maiores */
+  /* ... */
+}
+
+@media (min-width: 1080px) {
+  /* Estilos para desktops */
+  /* ... */
+}
