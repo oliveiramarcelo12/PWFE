@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menu">  
+    <nav class="bar">
+      <a class="navbar" href="home.html">Início</a>
+    </nav>
+  </nav>
+  </div>
+ 
+  <div class="container">
+    <h1>CRONÔMETRO</h1>
+    <img id=imgCrono src="img/imgCronometro.png" alt="Imagem Cronometro">
+<div class="boxCronometro">
+<p class="tempo">
+  <span class="horas">00</span>:<span class="minutos">00</span>:<span class="segundos">00</span>:<span class="milissegundos">00</span> <!-- utilizado tag span para dividir os elementos em blocos na mesma linha-->
+</p>
+<div>
+  <button onclick="iniciar()" class="iniciar">INICIAR</button>
+  <button onclick="parar()" class="parar">PARAR</button>
+  <button onclick="resetar()" class="resetar">RESETAR</button>
+</div>
+</div>
+</div>
+
+    
+
+    <script src="cronometro.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+body{
+    background: #ccd2f0;
+	color: black;
+	text-align: center;
+	letter-spacing: 2px;
+	
+	padding: 0;
+	font-family: 'Montserrat', sans-serif; 
+   
+}
+.container{margin-top: 10%;}
+
+img{
+    width: 20%;
+    height: 60px;
+    }
+
+
+.boxCronometro{
+    margin-top: 2%;
+    margin-left: 30%;;
+    align-items: center;
+    background-color: aliceblue;
+    padding: 05px;
+    border-radius: 20px;
+    width: 40%;
+    height: 100px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.25);  /* colocando sombra no " box " */
+   
+  }
+
+  button {
+    border: 0;
+    border-radius: 8px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    font-size: 15px;
+    background-color: #14558a;
+    color: #fff;
+    cursor:pointer; /* mudando o ponteiro quando o cursor estiver me cima do button*/
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.9);  /* colocando sombra no button */
+  }
+
+
+
+@media screen and  (min-width:800px) {
+    img{
+        width: 10%;
+        height: 60px;
+    }
+}
+
+.menu{
+    display: flex;
+
+    background-color: white;
+    width: 100%;
+    height: 50px;
+}
+.navbar{
+    color:black;
+    text-decoration: none;
+  
+}
+
+
+
+
+   

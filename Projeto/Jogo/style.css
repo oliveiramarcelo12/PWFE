@@ -95,8 +95,8 @@
 
 /* Estilos para a mensagem de empate */
 .tie-message {
-  color: gold; /* Cor do texto para empate */
-  background-color: bl; /* Cor de fundo para empate */
+  color: red; /* Cor do texto para empate */
+  background-color: lightgray; /* Cor de fundo para empate */
 }
 @keyframes fadeIn {
   from {

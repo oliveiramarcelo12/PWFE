@@ -1,0 +1,59 @@
+/* Estilo para o cabeçalho */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilo para o conteúdo principal */
+.conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo para os projetos */
+.projeto {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #aaa;
+}
+
+.projeto h2 {
+    color: #333;
+}
+
+/* Estilo para os links "Ver Projeto" */
+.projeto a {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.projeto a:hover {
+    background-color: #555;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+/* Estilo para as imagens dos projetos */
+.projeto img {
+    width: 200px; /* Defina a largura desejada */
+    height: 150px; /* Defina a altura desejada */
+    object-fit: cover; /* Para manter a proporção da imagem */
+    display: block; /* Para remover espaços em branco abaixo da imagem */
+    margin: 0 auto; /* Centralize a imagem horizontalmente */
+}
