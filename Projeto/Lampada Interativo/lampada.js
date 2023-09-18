@@ -7,7 +7,10 @@ const titulo = document.getElementById('titulo');
 
 // Referência ao botão "Reiniciar"
 const resetButton = document.getElementById('reset');
-
+resetButton.addEventListener('click', () => {
+    // Recarrega a página
+    location.reload();
+});
 // Variável para rastrear o número de cliques
 let clickCount = 0;
 
@@ -15,10 +18,9 @@ let clickCount = 0;
 const clickLimitToBreak = 7;
 
 // Função para ligar/desligar a lâmpada
-function toggleLamp() {
+function toggleLamp() { // Verifica se a lâmpada está quebrada
     if (isLampBroken()) {
         // Se a lâmpada estiver quebrada, não faz nada
-     
         return;
     }
 
@@ -55,7 +57,8 @@ resetButton.addEventListener('click', () => {
     resetButton.style.display = 'none'; // Oculta o botão "Reiniciar" novamente após ser clicado
 });
 
-// Event listener para o botão de alternância
+// Adiciona um ouvinte de evento ao botão de alternância (toggleButton) que responde ao evento de clique,
+// chamando a função toggleLamp quando o botão é clicado.
 toggleButton.addEventListener('click', toggleLamp);
 
 // Verifica se a lâmpada está quebrada verificando se o atributo src da imagem contém a string "lampadaQuebrada.jpg"

@@ -27,7 +27,7 @@ function milissegundos() {
     segundos()
   }
 }
-
+// Função para atualizar os segundos
 function segundos() {
   segNum++
   if (segNum < 10) { //deixar 0 estatico na frente enquanto for menor que 10
@@ -44,7 +44,7 @@ function segundos() {
  
   
 
-
+// Função para atualizar os minutos
 function minutos() {
   minNum++
   if (minNum < 10) {
@@ -58,7 +58,7 @@ function minutos() {
     horas()
   }
 }
-
+// Função para atualizar as horas
 function horas() {
   hourNum++
   if (hourNum < 10) {
@@ -70,17 +70,19 @@ function horas() {
   
 }
 
+// Função para iniciar o cronômetro
 function iniciar() {
-  clearInterval(INTERVALO)
+  clearInterval(INTERVALO) // Limpa qualquer intervalo anterior
   INTERVALO = setInterval(() => {
-    milissegundos()
+    milissegundos() // Chama a função de atualização dos milissegundos a cada 10 milissegundos
   }, 10)
 }
-
+// Função para parar o cronômetro
 function parar() {
-  clearInterval(INTERVALO)
+  clearInterval(INTERVALO) // Limpa o intervalo, interrompendo o cronômetro
 }
 
+// Função para resetar o cronômetro
 function resetar() {
   clearInterval(INTERVALO)
   miliNum = 0

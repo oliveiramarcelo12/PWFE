@@ -11,26 +11,21 @@
     <nav class="bar">
       <a class="navbar" href="home.html">Início</a>
     </nav>
-  </nav>
   </div>
  
   <div class="container">
     <h1>CRONÔMETRO</h1>
     <img id=imgCrono src="img/imgCronometro.png" alt="Imagem Cronometro">
-<div class="boxCronometro">
-<p class="tempo">
-  <span class="horas">00</span>:<span class="minutos">00</span>:<span class="segundos">00</span>:<span class="milissegundos">00</span> <!-- utilizado tag span para dividir os elementos em blocos na mesma linha-->
-</p>
-<div>
-  <button onclick="iniciar()" class="iniciar">INICIAR</button>
-  <button onclick="parar()" class="parar">PARAR</button>
-  <button onclick="resetar()" class="resetar">RESETAR</button>
-</div>
-</div>
-</div>
-
-    
-
-    <script src="cronometro.js"></script>
-</body>
-</html>
+    <div class="boxCronometro">
+      <p class="tempo">
+        <!-- Elementos para exibir o tempo com classes específicas para JavaScript -->
+        <span class="horas">00</span>:<span class="minutos">00</span>:<span class="segundos">00</span>:<span class="milissegundos">00</span>
+      </p>
+      <div>
+        <!-- Botões para controlar o cronômetro com funções JavaScript -->
+        <button onclick="iniciar()" class="iniciar">INICIAR</button>
+        <button onclick="parar()" class="parar">PARAR</button>
+        <button onclick="resetar()" class="resetar">RESETAR</button>
+      </div>
+    </div>
+  </div>
