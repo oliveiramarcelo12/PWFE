@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Velha</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-
-    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <main>
         <h1>JOGO DA VELHA</h1>
         <hr />
         <div class="game">
-            <button data-i="1"></button >
+            <button data-i="1"></button>
             <button data-i="2"></button>
             <button data-i="3"></button>
             <button data-i="4"></button>
@@ -23,23 +21,21 @@
             <button data-i="7"></button>
             <button data-i="8"></button>
             <button data-i="9"></button>
-          
-         
         </div>
-        <h2 class="currentPlayer" ></h2>
-      
-      
-        
-      </main>
-      <div class="score">
-        <p style="color: red;">Jogador X Vitórias: <span id="winsX" style="color: red;">0 </span></p>
+        <h2 class="currentPlayer"></h2>
+        <button id="restartButton" style="display: none;">Reiniciar Jogo</button>
+    </main>
+    <div class="score">
+        <p style="color: red;">Jogador X Vitórias: <span id="winsX" style="color: red;">0</span></p>
         <p style="color: green;">Jogador O Vitórias: <span id="winsO" style="color: green;">0</span></p>
-      </div>
-      <div class="result" id="result">
+    </div>
+    <div class="result" id="result">
         <p id="resultText"></p>
-      </div>
- 
+    </div>
+    <div class="mode-buttons">
+      <button id="cpuModeButton" class="selected">Jogar contra a CPU</button>
+      <button id="humanModeButton">Jogar contra outro jogador</button>
+  
+  </div>
 </body>
-   
-
-</html> 
+</html>
