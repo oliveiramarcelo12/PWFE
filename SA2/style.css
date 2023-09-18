@@ -1,73 +1,72 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: cursive;
-  }
-  
-  body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: pink;
-  }
-  
-  main {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  hr {
-    font-weight: bold;
-    height: 3px;
-    background: black;
-    margin-bottom: 10px;
-  }
-  
-  .game {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  
-  .game button {
-    width: 100px;
-    height: 100px;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 50px;
-    background: #f7f7f7;
-  }
-  .button-red {
-    background-color: red;
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.2s ease-in-out;
-  }
-  .button-x {
-    content: 'X';
-    color: red; /* Cor do texto para X */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+
 }
 
-/* Estilos personalizados para o texto O */
-.button-o {
-    content: 'O';
-    color: green; /* Cor do texto para O */
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:pink; /* Cor de fundo geral */
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #fff; /* Cor de fundo do tabuleiro */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #333; /* Cor do título */
+}
+
+hr {
+  font-weight: bold;
+  height: 3px;
+  background: #333; /* Cor da linha separadora */
+  margin-bottom: 20px;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  width: 320px;
+  max-width: 100%;
+}
+
+.game button {
+  width: 100%;
+  height: 100px;
+  cursor: pointer;
+  font-size: 36px;
+  background: #f7f7f7;
+  border: 2px solid #ccc; /* Cor da borda dos botões */
+  transition: background 0.2s, color 0.2s;
+}
+
+.game button:hover {
+  background: #e0e0e0; /* Cor de fundo quando hover */
+}
+
+.button-x {
+  color: red; /* Cor do texto para X */
+}
+
+.button-o {
+  color: green; /* Cor do texto para O */
+}
+
 .winner {
   animation: highlightWinner 2s ease-in-out;
   background-color: gold; /* Cor de fundo quando o jogador vence */
@@ -85,36 +84,34 @@
   display: none;
   z-index: 999;
   animation: fadeIn 0.5s ease-in-out;
-  
 }
+
 /* Estilos para a mensagem de vitória */
 .win-message {
   color: white; /* Cor do texto para vitória */
-  background-color: black; /* Cor de fundo para vitória */
+  background-color: #333; /* Cor de fundo para vitória */
 }
 
 /* Estilos para a mensagem de empate */
 .tie-message {
   color: gold; /* Cor do texto para empate */
-  background-color: black; /* Cor de fundo para empate */
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-/* Estilos base para dispositivos móveis */
-/* ... */
-
-@media (min-width: 680px) {
-  /* Estilos para tablets e telas maiores */
-  /* ... */
+  background-color: #333; /* Cor de fundo para empate */
 }
 
-@media (min-width: 1080px) {
-  /* Estilos para desktops */
-  /* ... */
+.mode-buttons button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white; /* Cor do texto dos botões de modo */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mode-buttons button.selected {
+  background: green; /* Cor de fundo quando o modo está selecionado */
+}
+
+.mode-buttons button:hover {
+  background: #555; /* Cor de fundo dos botões de modo quando hover */
 }

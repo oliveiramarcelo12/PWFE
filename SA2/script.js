@@ -10,6 +10,11 @@ const resultElement = document.getElementById("result");
 const resultTextElement = document.getElementById("resultText");
 let againstCPU = true; // Por padrão, jogar contra a CPU
 let gameActive = true; // Variável para controlar se o jogo ainda está ativo
+const cpuModeButton = document.getElementById("cpuModeButton");
+const humanModeButton = document.getElementById("humanModeButton");
+const restartButton = document.getElementById("restartButton");
+
+
 
 // Combinações vencedoras
 const winningCombinations = [
@@ -85,6 +90,84 @@ function makeCPUMove() {
         setTimeout(() => makeCPUMove(), 500); // Adiciona um atraso para a CPU jogar depois do jogador
     }
 }
+function makeSmartCPUMove() {
+    if (!gameActive) return; // Impede que a CPU jogue após o término do jogo
+
+    // Verificar se a CPU pode ganhar na próxima jogada
+    for (const combination of winningCombinations) {
+        const [a, b, c] = combination;
+        if (selected[a] === "O" && selected[b] === "O" && !selected[c]) {
+            makeMove(c);
+            return;
+        }
+        if (selected[a] === "O" && selected[c] === "O" && !selected[b]) {
+            makeMove(b);
+            return;
+        }
+        if (selected[b] === "O" && selected[c] === "O" && !selected[a]) {
+            makeMove(a);
+            return;
+        }
+    }
+
+    // Verificar se o jogador está prestes a ganhar e bloquear essa jogada
+    for (const combination of winningCombinations) {
+        const [a, b, c] = combination;
+        if (selected[a] === "X" && selected[b] === "X" && !selected[c]) {
+            makeMove(c);
+            return;
+        }
+        if (selected[a] === "X" && selected[c] === "X" && !selected[b]) {
+            makeMove(b);
+            return;
+        }
+        if (selected[b] === "X" && selected[c] === "X" && !selected[a]) {
+            makeMove(a);
+            return;
+        }
+    }
+
+    // Priorizar centro e cantos
+    const corners = [1, 3, 7, 9];
+    const center = 5;
+
+    if (!selected[center]) {
+        makeMove(center);
+        return;
+    }
+
+    for (const corner of corners) {
+        if (!selected[corner]) {
+            makeMove(corner);
+            return;
+        }
+    }
+
+    // Escolher aleatoriamente
+    const emptyCells = Array.from(document.querySelectorAll(".game button")).filter(
+        (cell) => !cell.textContent
+    );
+
+    if (emptyCells.length > 0) {
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        const index = randomCell.getAttribute("data-i");
+        makeMove(index);
+    }
+}
+
+function makeMove(index) {
+    const cell = document.querySelector(`[data-i="${index}"]`);
+    cell.innerHTML = "O"; // A CPU sempre joga como "O"
+    cell.classList.add("button-o");
+    cell.removeEventListener("click", newMove);
+    selected[index] = "O"; // Registre a jogada da CPU
+    const isGameOver = checkWinner();
+    togglePlayer();
+    if (!isGameOver && currentPlayer.innerHTML === "JOGADOR DA VEZ: O") {
+        setTimeout(() => makeSmartCPUMove(), 500);
+    }
+}
+
 
 // Verificar se há um vencedor ou empate
 function checkWinner() {
@@ -152,3 +235,50 @@ function updateScore(playerLastMove) {
         winsOElement.textContent = winsO;
     }
 }
+
+cpuModeButton.addEventListener("click", () => setGameMode(true));
+humanModeButton.addEventListener("click", () => setGameMode(false));
+restartButton.addEventListener("click", restartGame);
+
+// Função para definir o modo de jogo
+function setGameMode(isAgainstCPU) {
+    againstCPU = isAgainstCPU;
+    restartGame();
+}
+
+// Função para reiniciar o jogo
+function restartGame() {
+    selected = [];
+    currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
+    document.querySelectorAll(".game button").forEach((item) => {
+        item.innerHTML = "";
+        item.classList.remove("button-x", "button-o");
+        item.addEventListener("click", newMove);
+    });
+    resultElement.style.display = "none";
+    gameActive = true; // Restaure o estado do jogo para ativo
+
+    // Se o modo de jogo for contra a CPU e a CPU começar, faça a primeira jogada da CPU
+    if (againstCPU && currentPlayer.innerHTML === `JOGADOR DA VEZ: O`) {
+        setTimeout(() => makeCPUMove(), 500); // Adiciona um atraso para a CPU jogar depois do jogador
+    }
+}
+function resetResult() {
+    resultTextElement.textContent = "";
+    resultElement.style.display = "none";
+    resultElement.classList.remove("win-message", "tie-message");
+}
+
+// Adicione manipuladores de eventos aos botões de modo
+cpuModeButton.addEventListener("click", () => {
+    cpuModeButton.classList.add("selected");
+    humanModeButton.classList.remove("selected");
+    // Adicione aqui qualquer lógica adicional que você precise para alternar para o modo de CPU
+});
+
+humanModeButton.addEventListener("click", () => {
+    humanModeButton.classList.add("selected");
+    cpuModeButton.classList.remove("selected");
+    // Adicione aqui qualquer lógica adicional que você precise para alternar para o modo de jogador humano
+});
+// O código para alternar entre jogar contra a CPU ou outro jogador pode ser adicionado, mas requer algumas modificações na função init() e na interface do usuário.
