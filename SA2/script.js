@@ -155,20 +155,6 @@ function makeSmartCPUMove() {
     }
 }
 
-function makeMove(index) {
-    const cell = document.querySelector(`[data-i="${index}"]`);
-    cell.innerHTML = "O"; // A CPU sempre joga como "O"
-    cell.classList.add("button-o");
-    cell.removeEventListener("click", newMove);
-    selected[index] = "O"; // Registre a jogada da CPU
-    const isGameOver = checkWinner();
-    togglePlayer();
-    if (!isGameOver && currentPlayer.innerHTML === "JOGADOR DA VEZ: O") {
-        setTimeout(() => makeSmartCPUMove(), 500);
-    }
-}
-
-
 // Verificar se há um vencedor ou empate
 function checkWinner() {
   for (const combination of winningCombinations) {
@@ -276,9 +262,10 @@ cpuModeButton.addEventListener("click", () => {
     // Adicione aqui qualquer lógica adicional que você precise para alternar para o modo de CPU
 });
 
-humanModeButton.addEventListener("click", () => {
-    humanModeButton.classList.add("selected");
-    cpuModeButton.classList.remove("selected");
-    // Adicione aqui qualquer lógica adicional que você precise para alternar para o modo de jogador humano
-});
 // O código para alternar entre jogar contra a CPU ou outro jogador pode ser adicionado, mas requer algumas modificações na função init() e na interface do usuário.
+// Função para definir o modo de jogo
+function setGameMode(isAgainstCPU) {
+    againstCPU = isAgainstCPU;
+    // Recarregue a página
+    window.location.reload();
+}
