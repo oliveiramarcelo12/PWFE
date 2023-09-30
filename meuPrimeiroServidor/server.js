@@ -18,6 +18,7 @@ const server = http.createServer((req,res)=>{
         })
 
     } else if(req.url==="/sobre.html" ){
+         //se a for soliciado /sobre vai abrir o arquivo sobre.html
         fs.readFile('sobre.html',(err,data)=>{
             if (err) {//caso de erro
                 res.writeHead(500); //Mensagem de erro
