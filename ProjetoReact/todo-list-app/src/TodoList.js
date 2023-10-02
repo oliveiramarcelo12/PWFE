@@ -22,6 +22,7 @@ function TodoList() {
         // Atualiza o array 'tasks' com as tarefas restantes, após aexclusão.
     };
     return (
+        
         <div>
             <h1>Lista de Tarefas</h1>
             {/* Renderiza um título na página. */}
@@ -58,3 +59,4 @@ com o que o usuário digitar. */}
 }
 export default TodoList;
 // Exporta o componente 'TodoList' para uso em outros lugares do código.
+
