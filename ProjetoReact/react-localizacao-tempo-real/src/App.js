@@ -2,12 +2,13 @@ import './App.css';
 import React from 'react';
 import MapaAtual from './Mapa/MapaAtual';
 import MapaLongitudeLatitude from './Mapa/MapaLongitudeLatitude';
+import MapaCidade from './Mapa/MapaCidade';
 // Define o componente principal da aplicação, chamado 'App'.
 function App() {
 return (
 
 <div className="App">
-<MapaLongitudeLatitude />
+<MapaCidade/>
 </div>
 );
 }
